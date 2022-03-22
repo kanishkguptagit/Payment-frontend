@@ -1,0 +1,10 @@
+.pos{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 15px;
+    background-color: #2d4250;
+}
+
+.imgclass{
+    height: 33px;    
+}
