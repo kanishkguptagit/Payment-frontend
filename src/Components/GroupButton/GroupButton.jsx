@@ -14,23 +14,23 @@ const GroupButton = (props) => {
             <Button
                 className={classes.butt}
                 variant={props.var1 ?? "outlined"}
-                style={{ color: "white", fontSize: "12px" }}
+                style={{ color: "white", fontSize: "12px", borderRight:"1px solid #3f50b5" }}
             >
-                PREDICT
+                {props.text1}
             </Button>
             <Button
                 className={classes.butt}
                 variant={props.var2 ?? "outlined"}
                 style={{ color: "white", fontSize: "12px" }}
             >
-                ANALYTICS VIEW
+                {props.text2}
             </Button>
             <Button
                 className={classes.butt}
                 variant={props.var3 ?? "outlined"}
                 style={{ color: "white", fontSize: "12px" }}
             >
-                ADVANCED SEARCH
+                {props.text3}
             </Button>
         </ButtonGroup>
     );

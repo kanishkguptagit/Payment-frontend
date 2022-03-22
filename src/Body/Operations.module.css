@@ -5,3 +5,11 @@
     padding-right: 10px;
     background-color: #283d4a;
 }
+
+.tfield{
+    background-color: white;
+    border-radius: 7px;
+    margin-left: 20px;
+    height: 35px;
+    width: 220px;    
+}
