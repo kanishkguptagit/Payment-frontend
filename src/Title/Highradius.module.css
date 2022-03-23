@@ -1,7 +1,6 @@
 .pos{
     display: flex;
-    justify-content: center;
-    padding-bottom: 15px;
+    justify-content: center;    
     background-color: #2d4250;
 }
 
