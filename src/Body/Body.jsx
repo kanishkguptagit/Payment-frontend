@@ -1,10 +1,15 @@
-import React from 'react';
-import Operations from './Operations';
+import React from "react";
+
+import Operations from "./Operations";
+import Datatable from "./Datatable";
 
 const Body = () => {
     return (
-        <Operations />
-    )
-}
+        <>
+            <Operations />
+            <Datatable />
+        </>
+    );
+};
 
 export default Body;
