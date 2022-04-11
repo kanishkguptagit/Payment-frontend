@@ -22,7 +22,7 @@ const Operations = () => {
                     placeholder="Search Customer id"
                     type="search"
                 />
-                <GroupButton var2="disabled" 
+                <GroupButton var2="disabled" var3="disabled"
                     text1="ADD"
                     text2="EDIT"
                     text3="DELETE"

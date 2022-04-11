@@ -39,9 +39,31 @@ const Datatable = () => {
     return (
         <div style={{ height: 400, width: "100%", backgroundColor:"#283d4a" }}>
             <DataGrid
-                sx={{
-                    color:"white"
-                }}
+                sx={{ 
+                    border: 0, 
+                    "& .MuiDatGrid-cellCheckbox":{ 
+                          color: "white" 
+                     }, 
+                    "& .MuiDataGrid-cellCheckboxInput":{ 
+                          color:"white" 
+                     }, 
+                     "&.MuiDataGrid-columnHeaderTitle":{ 
+                          whiteSpace:"break-spaces", 
+                          lineHeight:1, 
+                     }, 
+                     "& .MuiTablePagination-root":{ 
+                          color:"white" 
+                     }, 
+                     "& . MuiDataGrid-iconSeparator":{ 
+                          color:"#2D4250" 
+                     },  
+
+                     "& .MuiButtonBase-root-MuiIconButton-root":{ 
+                          color: "white" 
+                     }, 
+
+                      color:'white' 
+             }}
                 rows={rows}
                 rowHeight={30}
                 columns={columns}
