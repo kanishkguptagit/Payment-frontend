@@ -9,7 +9,7 @@ import EditButton from "../Components/buttons/EditButton";
 import DeleteButton from "../Components/buttons/DeleteButton";
 import ButtonGroup from "@mui/material/ButtonGroup";
 
-const Operations = () => {
+const Operations = (props) => {
     return (
         <>
             <div className={classes.contain}>
@@ -36,8 +36,8 @@ const Operations = () => {
                     aria-label="outlined button group"
                 >
                     <AddButton/>
-                    <EditButton/>
-                    <DeleteButton/>
+                    <EditButton rows={props.rows}/>
+                    <DeleteButton rows={props.rows}/>
                 </ButtonGroup>
             </div>
         </>

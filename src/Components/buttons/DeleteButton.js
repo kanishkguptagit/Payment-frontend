@@ -44,6 +44,7 @@ const DeleteButton = (props) => {
         //   delData(data)
         // });
         setIsLoading(0);
+        console.log(props.rows, typeof(props.rows[0]))
         handleClose();
     };
 
@@ -65,6 +66,7 @@ const DeleteButton = (props) => {
                 variant="outlined"
                 onClick={handleClickOpen}
                 style={{ height: 30, width: 150, color: "white", borderTopLeftRadius:"0", borderBottomLeftRadius:"0" }}
+                disabled={props.rows.length==0}
             >
                 Delete
             </Button>

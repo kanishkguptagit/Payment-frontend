@@ -13,25 +13,21 @@ const cols = [
   { field: "doc_id", headerName:'doc_id', width:120 }, 
   { field: "posting_date", headerName:'posting_date', width:150 }, 
   { field: "document_create_date", headerName:'document_create_date', width:180 }, 
-  // { field: "document_create_date1", headerName:'document_create_date1', width:180 }, 
   { field: "due_in_date", headerName:'due_in_date', width:120 }, 
   { field: "invoice_currency", headerName:'invoice_currency', width:150 }, 
   { field: "document_type", headerName:'document_type', width:120 }, 
   { field: "posting_id", headerName:'posting_id', width:100 }, 
-  // { field: "area_business", headerName:'area_business', width:120 }, 
   { field: "total_open_amount", headerName:'total_open_amount', width:180 }, 
   { field: "baseline_create_date", headerName:'baseline_create_date', width:180 }, 
-  { field: "cust_payment_terms", headerName:'cust_payment_terms', width:180 }, 
+  { field: "customer_payment_terms", headerName:'cust_payment_terms', width:180 }, 
   { field: "invoice_id", headerName:'invoice_id', width:120 }, 
-  // { field: "isOpen", headerName:'isOpen', width:100 }, 
-  // { field: "is_deleted", headerName:'is_deleted', width:120 }, 
 ];
 
-const MainGrid=()=>{ 
+const MainGrid=(props)=>{
 
   const [data,setData] = useState([]);
   const fetchData = async () =>{
-    const res = await axios.get('http://localhost:8080/Payment/fetchdata?offset=0&limit=10');
+    const res = await axios.get('http://localhost:8080/Payment/fetchdata?offset=48575&limit=5');
     setData(res.data.Payments);
   }
   useEffect(()=>{
@@ -53,6 +49,8 @@ const MainGrid=()=>{
                     pagination 
                     rowsPerPageOptions={[5,10,20]} 
                     sortingOrder={['desc','asc']} 
+                    selectionModel={props.selectedRow}
+                    onSelectionModelChange={newmodel => {props.setSelectedRow(newmodel)}}
                     initialState={{ 
                           sorting: { 
                               sortModel:[ 

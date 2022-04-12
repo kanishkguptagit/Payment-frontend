@@ -11,9 +11,12 @@ import Box from "@mui/material/Box";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Grid from "@mui/material/Grid";
 import * as React from "react";
+import axios from 'axios';
 
-const EditButton = () => {
-    const [open, setOpen] = React.useState(false);
+const EditButton = (props) => {
+    const [open, setOpen] = useState(false);
+    const [curr,setCurr] = useState();
+    const [cpt, setCpt] = useState();
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -23,12 +26,44 @@ const EditButton = () => {
         setOpen(false);
     };
 
+    const handleEditClick = (e) => {
+        e.preventDefault();
+
+        const sl_no = props.rows[0];
+
+        const data = JSON.stringify({
+            sl_no: sl_no,
+            invcurr: curr,
+            cpterms: cpt
+        })
+
+        const config = {
+            method: "POST",
+            url: "Payment/updatedata",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            data:data,
+        };
+
+        axios(config)
+            .then(function (response) {
+                console.log(JSON.stringify(response.data));
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+        handleClose();
+    }
+
     const theme = useTheme();
     const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
 
     return (
         <div>
             <Button
+                disabled={props.rows.length !=1}
                 className="add_button"
                 variant="outlined"
                 onClick={handleClickOpen}
@@ -59,6 +94,7 @@ const EditButton = () => {
                                     type="text"
                                     fullWidth
                                     variant="outlined"
+                                    onChange={e=>setCurr(e.target.value)}
                                 />
                             </Grid>
                             <Grid item xs={6}>
@@ -70,6 +106,7 @@ const EditButton = () => {
                                     type="text"
                                     fullWidth
                                     variant="outlined"
+                                    onChange={e=>setCpt(e.target.value)}
                                 />
                             </Grid>
                         </Grid>
@@ -77,7 +114,7 @@ const EditButton = () => {
                 </DialogContent>
                 <DialogActions style={{ backgroundColor: "#283a46" }}>
                     <Button
-                        onClick={handleClose}
+                        onClick={handleEditClick}
                         variant="outlined"
                         style={{
                             borderColor: "white",

@@ -1,11 +1,14 @@
-import React from "react";
+import React,{useState} from "react";
 import Operations from "./Operations";
 import MainGrid from "./MainGrid";
 const Body = () => {
+
+    const [selectedRow,setSelectedRow] = useState([]);
+
     return (
         <>
-            <Operations />
-            <MainGrid />
+            <Operations rows={selectedRow} />
+            <MainGrid selectedRow={selectedRow} setSelectedRow={setSelectedRow} />
         </>
     );
 };

@@ -70,7 +70,7 @@ const AddButton = () => {
             dcdate: doc_create_dt,
             ddate: due_dt,
             invcurr: invoice_currency,
-            dtype: document_type,
+            doctype: document_type,
             pid: posting_id,
             amt: total_open_amount,
             bcdate: baseline_dt,
@@ -83,12 +83,9 @@ const AddButton = () => {
             url: "Payment/adddata",
             headers: {
                 "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "*",
             },
             data: data,
         };
-
-        console.log(data);
 
         axios(config)
             .then(function (response) {
