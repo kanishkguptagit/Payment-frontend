@@ -7,9 +7,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import Slide from "@mui/material/Slide";
 import axios from "axios";
-import { TransitionProps } from "@mui/material/transitions";
 
 const DeleteButton = (props) => {
     const [open, setOpen] = React.useState(false);
@@ -53,10 +51,14 @@ const DeleteButton = (props) => {
             .get("Payment/deletedata?" + params)
             .then((res) => {
                 console.log(JSON.stringify(res.data));
+                const newData = props.data.filter(item => !props.rows.includes(item.sl_no));
+                props.setData(newData);
+                
             })
             .catch((e) => {
                 console.log(e);
             });
+
 
         handleClose();
     };

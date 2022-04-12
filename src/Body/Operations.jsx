@@ -1,5 +1,5 @@
 import React from "react";
-import PredictButton from '../Components/buttons/PredictButton';
+import PredictButton from "../Components/buttons/PredictButton";
 import TextField from "@mui/material/TextField";
 import classes from "./Operations.module.css";
 import AddButton from "../Components/buttons/AddButton";
@@ -13,15 +13,15 @@ const Operations = (props) => {
     return (
         <>
             <div className={classes.contain}>
-            <ButtonGroup
-                size="small"
-                variant="outlined"
-                aria-label="outlined button group"
-            >
-                    <PredictButton/>
-                    <AnalyticsButton/>
-                    <AdvancedSearch/>
-            </ButtonGroup>
+                <ButtonGroup
+                    size="small"
+                    variant="outlined"
+                    aria-label="outlined button group"
+                >
+                    <PredictButton />
+                    <AnalyticsButton />
+                    <AdvancedSearch />
+                </ButtonGroup>
                 <TextField
                     style={{ marginLeft: "70px", marginRight: "50px" }}
                     className={classes.tfield}
@@ -35,9 +35,13 @@ const Operations = (props) => {
                     variant="outlined"
                     aria-label="outlined button group"
                 >
-                    <AddButton/>
-                    <EditButton rows={props.rows}/>
-                    <DeleteButton rows={props.rows}/>
+                    <AddButton />
+                    <EditButton rows={props.rows} />
+                    <DeleteButton
+                        rows={props.rows}
+                        data={props.data}
+                        setData={props.setData}
+                    />
                 </ButtonGroup>
             </div>
         </>

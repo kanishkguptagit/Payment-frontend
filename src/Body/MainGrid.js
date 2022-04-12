@@ -24,11 +24,9 @@ const cols = [
 ];
 
 const MainGrid=(props)=>{
-
-  const [data,setData] = useState([]);
   const fetchData = async () =>{
     const res = await axios.get('http://localhost:8080/Payment/fetchdata?offset=48578&limit=10');
-    setData(res.data.Payments);
+    props.setData(res.data.Payments);
   }
   useEffect(()=>{
     fetchData();
@@ -41,7 +39,7 @@ const MainGrid=(props)=>{
                     autoHeight 
                     getRowId={(row) => row.sl_no}
                     columns={cols} 
-                    rows={data} 
+                    rows={props.data} 
                     // page={pageSize}
                     checkboxSelection 
                     pageSize={pageSize} 
