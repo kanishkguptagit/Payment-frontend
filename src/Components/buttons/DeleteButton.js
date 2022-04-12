@@ -1,6 +1,4 @@
-import * as React from "react";
-import Box from "@mui/material/Box";
-import LinearProgress from "@mui/material/LinearProgress";
+import React,{useState} from "react";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
@@ -10,31 +8,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import axios from "axios";
 
 const DeleteButton = (props) => {
-    const [open, setOpen] = React.useState(false);
-    const [loading, setIsLoading] = React.useState(0);
-
-    const delData = async (data) => {
-        var data = JSON.stringify({
-            sl_no: data,
-        });
-
-        var config = {
-            method: "post",
-            url: "http://localhost:8080/hrc_crud_pojo/delData",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            data: data,
-        };
-
-        axios(config)
-            .then(function (response) {
-                console.log(JSON.stringify(response.data));
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-    };
+    const [open, setOpen] = useState(false);
 
     const handleDelete = () => {
         let params = "";
@@ -70,10 +44,6 @@ const DeleteButton = (props) => {
     const handleClose = () => {
         setOpen(false);
     };
-
-    // React.useEffect(() => {
-    //     console.log(props.data);
-    // }, [open]);
 
     return (
         <div>

@@ -54,10 +54,14 @@ const EditButton = (props) => {
 
     useEffect(()=>{
         const sl = props.rows[0];
-        const prefill = props.data.filter(item => item.sl_no == sl);
-        setCurr(prefill[0].invoice_currency);
-        setCpt(prefill[0].customer_payment_terms);
-    },[open])
+
+        if(sl!=null)
+        {
+            const prefill = props.data.filter(item => item.sl_no === sl);
+            setCurr(prefill[0].invoice_currency);
+            setCpt(prefill[0].customer_payment_terms);
+        }
+    },[open, props.data, props.rows])
 
     const theme = useTheme();
     const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
@@ -65,7 +69,7 @@ const EditButton = (props) => {
     return (
         <div>
             <Button
-                disabled={props.rows.length !=1}
+                disabled={props.rows.length !==1}
                 className="add_button"
                 variant="outlined"
                 onClick={handleClickOpen}
