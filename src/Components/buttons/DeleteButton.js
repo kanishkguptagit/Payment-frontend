@@ -57,7 +57,7 @@ const DeleteButton = (props) => {
                     borderTopLeftRadius: "0",
                     borderBottomLeftRadius: "0",
                 }}
-                disabled={props.rows.length == 0}
+                disabled={props.rows.length === 0}
             >
                 Delete
             </Button>
