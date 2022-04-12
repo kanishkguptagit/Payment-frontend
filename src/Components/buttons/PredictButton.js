@@ -7,7 +7,7 @@ const PredictButton = () =>{
     }
     return (
         <>
-            <Button className="add_button"  variant="outlined" onClick={handleClickOpen} style={{ height: 30,width: 150,color: "white"}}>
+            <Button className="add_button"  variant="contained" onClick={handleClickOpen} style={{ height: 30,width: 150,color: "white"}}>
                 Predict
             </Button>
         </>
