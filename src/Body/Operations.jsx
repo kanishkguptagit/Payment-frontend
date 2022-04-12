@@ -1,19 +1,27 @@
 import React from "react";
-
-import GroupButton from "../Components/GroupButton/GroupButton";
+import PredictButton from '../Components/buttons/PredictButton';
 import TextField from "@mui/material/TextField";
 import classes from "./Operations.module.css";
+import AddButton from "../Components/buttons/AddButton";
+import AnalyticsButton from "../Components/buttons/AnalyticsButton";
+import AdvancedSearch from "../Components/buttons/AdvancedSearch";
+import EditButton from "../Components/buttons/EditButton";
+import DeleteButton from "../Components/buttons/DeleteButton";
+import ButtonGroup from "@mui/material/ButtonGroup";
 
 const Operations = () => {
     return (
         <>
             <div className={classes.contain}>
-                <GroupButton
-                    var1="contained"
-                    text1="PREDICT"
-                    text2="ANALYTICS VIEW"
-                    text3="ADVANCED SEARCH"
-                />
+            <ButtonGroup
+                size="small"
+                variant="outlined"
+                aria-label="outlined button group"
+            >
+                    <PredictButton/>
+                    <AnalyticsButton/>
+                    <AdvancedSearch/>
+            </ButtonGroup>
                 <TextField
                     style={{ marginLeft: "70px", marginRight: "50px" }}
                     className={classes.tfield}
@@ -22,11 +30,15 @@ const Operations = () => {
                     placeholder="Search Customer id"
                     type="search"
                 />
-                <GroupButton var2="disabled" var3="disabled"
-                    text1="ADD"
-                    text2="EDIT"
-                    text3="DELETE"
-                />
+                <ButtonGroup
+                    size="small"
+                    variant="outlined"
+                    aria-label="outlined button group"
+                >
+                    <AddButton/>
+                    <EditButton/>
+                    <DeleteButton/>
+                </ButtonGroup>
             </div>
         </>
     );
