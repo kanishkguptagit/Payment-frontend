@@ -7,7 +7,7 @@ const cols = [
   { field: "id", hide:true }, 
   { field: "sl_no", headerName:'sl_no', width:80 }, 
   { field: "business_code", headerName:'business_code', width:90 }, 
-  { field: "cust_number", headerName:'customer_number', width:150 }, 
+  { field: "customer_number", headerName:'customer_number', width:150 }, 
   { field: "clear_date", headerName:'clear_Date', width:120 }, 
   { field: "buisness_year", headerName:'buisness_year', width:120 }, 
   { field: "doc_id", headerName:'doc_id', width:120 }, 
@@ -31,8 +31,8 @@ const MainGrid=()=>{
 
   const [data,setData] = useState([]);
   const fetchData = async () =>{
-    const res = await axios.get('http://localhost:8081/backend_hrc/servlet');
-    setData(res.data);
+    const res = await axios.get('http://localhost:8080/Payment/fetchdata?offset=0&limit=10');
+    setData(res.data.Payments);
   }
   useEffect(()=>{
     fetchData();
