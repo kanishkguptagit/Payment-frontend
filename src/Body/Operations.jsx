@@ -36,7 +36,7 @@ const Operations = (props) => {
                     aria-label="outlined button group"
                 >
                     <AddButton data={props.data} setData={props.setData} />
-                    <EditButton rows={props.rows} />
+                    <EditButton rows={props.rows} data={props.data} setData={props.setData} />
                     <DeleteButton
                         rows={props.rows}
                         data={props.data}

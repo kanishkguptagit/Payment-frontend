@@ -31,19 +31,14 @@ const EditButton = (props) => {
 
         const sl_no = props.rows[0];
 
-        const data = JSON.stringify({
-            sl_no: sl_no,
-            invcurr: curr,
-            cpterms: cpt
-        })
+        const url = "sl_no="+sl_no+"&invcurr="+curr+"&cpterms="+cpt;
 
         const config = {
-            method: "POST",
-            url: "Payment/updatedata",
+            method: "GET",
+            url: "Payment/updatedata?"+url,
             headers: {
                 "Content-Type": "application/json",
             },
-            data:data,
         };
 
         axios(config)
@@ -56,6 +51,13 @@ const EditButton = (props) => {
 
         handleClose();
     }
+
+    useEffect(()=>{
+        const sl = props.rows[0];
+        const prefill = props.data.filter(item => item.sl_no == sl);
+        setCurr(prefill[0].invoice_currency);
+        setCpt(prefill[0].customer_payment_terms);
+    },[open])
 
     const theme = useTheme();
     const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
@@ -95,6 +97,7 @@ const EditButton = (props) => {
                                     fullWidth
                                     variant="outlined"
                                     onChange={e=>setCurr(e.target.value)}
+                                    value={curr}
                                 />
                             </Grid>
                             <Grid item xs={6}>
@@ -107,6 +110,7 @@ const EditButton = (props) => {
                                     fullWidth
                                     variant="outlined"
                                     onChange={e=>setCpt(e.target.value)}
+                                    value={cpt}
                                 />
                             </Grid>
                         </Grid>
