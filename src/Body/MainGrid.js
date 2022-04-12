@@ -27,7 +27,7 @@ const MainGrid=(props)=>{
 
   const [data,setData] = useState([]);
   const fetchData = async () =>{
-    const res = await axios.get('http://localhost:8080/Payment/fetchdata?offset=48575&limit=5');
+    const res = await axios.get('http://localhost:8080/Payment/fetchdata?offset=48578&limit=10');
     setData(res.data.Payments);
   }
   useEffect(()=>{

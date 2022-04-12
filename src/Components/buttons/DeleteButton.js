@@ -39,12 +39,25 @@ const DeleteButton = (props) => {
     };
 
     const handleDelete = () => {
-        setIsLoading(1);
-        // props.data.map(data=>{
-        //   delData(data)
-        // });
-        setIsLoading(0);
-        console.log(props.rows, typeof(props.rows[0]))
+        let params = "";
+
+        for (let i = 0; i < props.rows.length; i++) {
+            params = params + "sl_no=" + props.rows[i] + "&";
+        }
+
+        params.slice(0, -1);
+
+        console.log("params = "+params);
+
+        axios
+            .get("Payment/deletedata?" + params)
+            .then((res) => {
+                console.log(JSON.stringify(res.data));
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+
         handleClose();
     };
 
@@ -56,17 +69,23 @@ const DeleteButton = (props) => {
         setOpen(false);
     };
 
-    React.useEffect(() => {
-        console.log(props.data);
-    }, [open]);
+    // React.useEffect(() => {
+    //     console.log(props.data);
+    // }, [open]);
 
     return (
         <div>
             <Button
                 variant="outlined"
                 onClick={handleClickOpen}
-                style={{ height: 30, width: 150, color: "white", borderTopLeftRadius:"0", borderBottomLeftRadius:"0" }}
-                disabled={props.rows.length==0}
+                style={{
+                    height: 30,
+                    width: 150,
+                    color: "white",
+                    borderTopLeftRadius: "0",
+                    borderBottomLeftRadius: "0",
+                }}
+                disabled={props.rows.length == 0}
             >
                 Delete
             </Button>
