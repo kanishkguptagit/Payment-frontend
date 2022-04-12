@@ -20,7 +20,7 @@ const Operations = (props) => {
                 >
                     <PredictButton />
                     <AnalyticsButton />
-                    <AdvancedSearch />
+                    <AdvancedSearch setData={props.setData} />
                 </ButtonGroup>
                 <TextField
                     style={{ marginLeft: "70px", marginRight: "50px" }}
@@ -35,7 +35,7 @@ const Operations = (props) => {
                     variant="outlined"
                     aria-label="outlined button group"
                 >
-                    <AddButton />
+                    <AddButton data={props.data} setData={props.setData} />
                     <EditButton rows={props.rows} />
                     <DeleteButton
                         rows={props.rows}
