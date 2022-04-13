@@ -8,13 +8,21 @@ import AdvancedSearch from "../Components/buttons/AdvancedSearch";
 import EditButton from "../Components/buttons/EditButton";
 import DeleteButton from "../Components/buttons/DeleteButton";
 import ButtonGroup from "@mui/material/ButtonGroup";
+import axios from 'axios';
 
 const Operations = (props) => {
-    // const [searchfield, setSearchfield] = useState();
 
-    // const searchHandler = (e) =>{
+    const searchHandler = (e) => {
+        const search = e.target.value;
+        const params = "offset=0&limit=10&search=" + search;
 
-    // }
+        axios
+            .get("Payment/fetchdata?"+params)
+            .then((res) => {
+                props.setData(res.data.Payments);
+            })
+            .catch((e) => console.log(e));
+    };
 
     return (
         <>
@@ -35,6 +43,7 @@ const Operations = (props) => {
                     id="outlined-search"
                     placeholder="Search Customer id"
                     type="search"
+                    onChange={searchHandler}
                 />
                 <ButtonGroup
                     size="small"
