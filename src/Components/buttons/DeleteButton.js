@@ -53,7 +53,7 @@ const DeleteButton = (props) => {
                 onClick={handleClickOpen}
                 style={{
                     height: 30,
-                    width: 150,
+                    width: 190,
                     color: "white",
                     borderTopLeftRadius: "0",
                     borderBottomLeftRadius: "0",

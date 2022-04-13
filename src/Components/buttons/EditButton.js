@@ -83,7 +83,7 @@ const EditButton = (props) => {
                 className="add_button"
                 variant="outlined"
                 onClick={handleClickOpen}
-                style={{ height: 30, width: 150, color: "white", borderRadius:"0" }}
+                style={{ height: 30, width: 190, color: "white", borderRadius:"0" }}
             >
                 Edit
             </Button>
