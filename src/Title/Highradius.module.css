@@ -2,6 +2,14 @@
     display: flex;
     justify-content: center;    
     background-color: #2d4250;
+    height: 33px; 
+}
+
+.pos{
+    display: flex;
+    justify-content: left;
+    background-color: #2d4250;
+    height: 33px; 
 }
 
 .imgclass{

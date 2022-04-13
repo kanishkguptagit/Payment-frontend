@@ -15,7 +15,7 @@
 }
 
 .btnplaylist {
-    background-image: url("reload.png");
+    background-image: url("../reload.png");
     background-size: cover;
     width: 20px;
     height: 20px;
