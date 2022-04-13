@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PredictButton from "../Components/buttons/PredictButton";
+import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import classes from "./Operations.module.css";
 import AddButton from "../Components/buttons/AddButton";
@@ -8,7 +9,7 @@ import AdvancedSearch from "../Components/buttons/AdvancedSearch";
 import EditButton from "../Components/buttons/EditButton";
 import DeleteButton from "../Components/buttons/DeleteButton";
 import ButtonGroup from "@mui/material/ButtonGroup";
-import axios from 'axios';
+import axios from "axios";
 
 const Operations = (props) => {
 
@@ -17,7 +18,7 @@ const Operations = (props) => {
         const params = "offset=0&limit=10&search=" + search;
 
         axios
-            .get("Payment/fetchdata?"+params)
+            .get("Payment/fetchdata?" + params)
             .then((res) => {
                 props.setData(res.data.Payments);
             })
@@ -35,6 +36,14 @@ const Operations = (props) => {
                     <PredictButton />
                     <AnalyticsButton />
                     <AdvancedSearch setData={props.setData} />
+                    <Button
+                        className="btn-play"
+                        variant="outlined"
+                        style={{ color: "white" }}
+                        onClick={ props.setReload }
+                    >
+                        <i className={classes.btnplaylist}></i>
+                    </Button>
                 </ButtonGroup>
                 <TextField
                     style={{ marginLeft: "70px", marginRight: "50px" }}

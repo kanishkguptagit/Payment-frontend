@@ -13,3 +13,10 @@
     height: 35px;
     width: 220px;    
 }
+
+.btnplaylist {
+    background-image: url("reload.png");
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+  }

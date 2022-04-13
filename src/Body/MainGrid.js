@@ -25,7 +25,7 @@ const cols = [
 
 const MainGrid=(props)=>{
   
-  const[pageSize,setPageSize]=useState(5)
+  const[pageSize,setPageSize] = useState(5);
 
   const fetchData = async () =>{
     const res = await axios.get('Payment/fetchdata?offset=48578&limit=10');
@@ -34,7 +34,7 @@ const MainGrid=(props)=>{
 
   useEffect(()=>{
     fetchData();
-  },[])
+  },[props.reload])
 
      return (
             <div className='grid'> 
