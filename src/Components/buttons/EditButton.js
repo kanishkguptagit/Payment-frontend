@@ -44,6 +44,16 @@ const EditButton = (props) => {
         axios(config)
             .then(function (response) {
                 console.log(JSON.stringify(response.data));
+                props.setData(prevData => {
+                    const temp = prevData.findIndex(item=>item.sl_no === sl_no);
+
+                    if(temp>=0)
+                    {
+                        prevData[temp].invoice_currency = curr;
+                        prevData[temp].customer_payment_terms = cpt;
+                    }
+                    return prevData;
+                })
             })
             .catch(function (error) {
                 console.log(error);
