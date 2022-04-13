@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PredictButton from "../Components/buttons/PredictButton";
 import TextField from "@mui/material/TextField";
 import classes from "./Operations.module.css";
@@ -10,6 +10,12 @@ import DeleteButton from "../Components/buttons/DeleteButton";
 import ButtonGroup from "@mui/material/ButtonGroup";
 
 const Operations = (props) => {
+    // const [searchfield, setSearchfield] = useState();
+
+    // const searchHandler = (e) =>{
+
+    // }
+
     return (
         <>
             <div className={classes.contain}>
@@ -36,11 +42,16 @@ const Operations = (props) => {
                     aria-label="outlined button group"
                 >
                     <AddButton data={props.data} setData={props.setData} />
-                    <EditButton rows={props.rows} data={props.data} setData={props.setData} />
+                    <EditButton
+                        rows={props.rows}
+                        data={props.data}
+                        setData={props.setData}
+                    />
                     <DeleteButton
                         rows={props.rows}
                         data={props.data}
                         setData={props.setData}
+                        setSelectedRow={props.setSelectedRow}
                     />
                 </ButtonGroup>
             </div>

@@ -26,6 +26,7 @@ const DeleteButton = (props) => {
             .then((res) => {
                 console.log(JSON.stringify(res.data));
                 const newData = props.data.filter(item => !props.rows.includes(item.sl_no));
+                props.setSelectedRow([]);
                 props.setData(newData);
                 
             })

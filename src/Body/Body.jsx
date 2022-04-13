@@ -7,7 +7,12 @@ const Body = () => {
 
     return (
         <>
-            <Operations rows={selectedRow} data={data} setData={setData} />
+            <Operations
+                rows={selectedRow}
+                setSelectedRow={setSelectedRow}
+                data={data}
+                setData={setData}
+            />
             <MainGrid
                 selectedRow={selectedRow}
                 setSelectedRow={setSelectedRow}
