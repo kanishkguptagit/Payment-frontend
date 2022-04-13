@@ -109,7 +109,8 @@ const AddButton = (props) => {
             .then(function (response) {
                 console.log(JSON.stringify(response.data));
                 dataObj2.sl_no = response.data.sl_no;
-                props.setData(prevData => [...prevData, dataObj2])
+                props.setData(prevData => [...prevData, dataObj2]);
+                props.setCountRows(prevData => prevData+1);
             })
             .catch(function (error) {
                 console.log(error);

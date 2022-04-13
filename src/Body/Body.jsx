@@ -6,6 +6,7 @@ const Body = () => {
     const [data, setData] = useState([]);
     const [selectedRow, setSelectedRow] = useState([]);
     const [reload, setReload] = useState(0);
+    const [countRows,setCountRows] = useState(0);
 
     const reloadHandler = () => {
         setReload(prev => 1-prev);
@@ -20,6 +21,8 @@ const Body = () => {
                 setData={setData}
                 reload={reload}
                 setReload={reloadHandler}
+                countRows={countRows}
+                setCountRows={setCountRows}
             />
             <MainGrid
                 selectedRow={selectedRow}
@@ -28,6 +31,8 @@ const Body = () => {
                 setData={setData}
                 reload={reload}
                 setReload={setReload}
+                countRows={countRows}
+                setCountRows={setCountRows}
             />
             <Footer />
         </>

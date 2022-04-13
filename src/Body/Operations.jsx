@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import PredictButton from "../Components/buttons/PredictButton";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
@@ -12,7 +12,6 @@ import ButtonGroup from "@mui/material/ButtonGroup";
 import axios from "axios";
 
 const Operations = (props) => {
-
     const searchHandler = (e) => {
         const search = e.target.value;
         const params = "offset=0&limit=10&search=" + search;
@@ -21,6 +20,7 @@ const Operations = (props) => {
             .get("Payment/fetchdata?" + params)
             .then((res) => {
                 props.setData(res.data.Payments);
+                props.setCountRows(res.data.rowCount);
             })
             .catch((e) => console.log(e));
     };
@@ -40,7 +40,7 @@ const Operations = (props) => {
                         className="btn-play"
                         variant="outlined"
                         style={{ color: "white" }}
-                        onClick={ props.setReload }
+                        onClick={props.setReload}
                     >
                         <i className={classes.btnplaylist}></i>
                     </Button>
@@ -59,7 +59,12 @@ const Operations = (props) => {
                     variant="outlined"
                     aria-label="outlined button group"
                 >
-                    <AddButton data={props.data} setData={props.setData} />
+                    <AddButton
+                        data={props.data}
+                        setData={props.setData}
+                        countRows={props.countRows}
+                        setCountRows={props.setCountRows}
+                    />
                     <EditButton
                         rows={props.rows}
                         data={props.data}
@@ -70,6 +75,8 @@ const Operations = (props) => {
                         data={props.data}
                         setData={props.setData}
                         setSelectedRow={props.setSelectedRow}
+                        countRows={props.countRows}
+                        setCountRows={props.setCountRows}
                     />
                 </ButtonGroup>
             </div>

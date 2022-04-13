@@ -30,6 +30,7 @@ const MainGrid=(props)=>{
   const fetchData = async () =>{
     const res = await axios.get('Payment/fetchdata?offset=48578&limit=10');
     props.setData(res.data.Payments);
+    props.setCountRows(res.data.rowCount);
   }
 
   useEffect(()=>{
@@ -43,7 +44,7 @@ const MainGrid=(props)=>{
                     getRowId={(row) => row.sl_no}
                     columns={cols} 
                     rows={props.data} 
-                    rowCount={props.data.length}
+                    rowCount={props.countRows}
                     // page={pageSize}
                     checkboxSelection 
                     pageSize={pageSize} 
