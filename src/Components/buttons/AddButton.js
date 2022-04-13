@@ -16,20 +16,20 @@ import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DesktopDatePicker from "@mui/lab/DesktopDatePicker";
 
 var axios = require("axios");
-const AddButton = () => {
+const AddButton = (props) => {
     const [open, setOpen] = useState(false);
     const [business_code, setBusiness_code] = useState("");
-    const [cust_number, setCust_number] = useState("");
+    const [cust_number, setCust_number] = useState();
     const [clear_date, setClear_date] = useState("");
-    const [buisness_year, setBuisness_year] = useState("");
+    const [buisness_year, setBuisness_year] = useState();
     const [doc_id, setDoc_id] = useState("");
     const [posting_date, setPosting_date] = useState("");
     const [document_create_date, setDocument_create_date] = useState("");
     const [due_in_date, setDue_in_date] = useState("");
     const [invoice_currency, setInvoice_currency] = useState("");
     const [document_type, setDocument_type] = useState("");
-    const [posting_id, setPosting_id] = useState("");
-    const [total_open_amount, setTotal_open_amount] = useState("");
+    const [posting_id, setPosting_id] = useState();
+    const [total_open_amount, setTotal_open_amount] = useState();
     const [baseline_create_date, setBaseline_create_date] = useState("");
     const [cust_payment_terms, setCust_payment_terms] = useState("");
     const [invoice_id, setInvoice_id] = useState("");
@@ -58,7 +58,7 @@ const AddButton = () => {
         var due_dt = convertDate(due_in_date);
         var baseline_dt = convertDate(baseline_create_date);
 
-        var data = JSON.stringify({
+        let dataObj = {
             bcode: business_code,
             cnum: cust_number,
             cdate: clear_dt,
@@ -74,7 +74,27 @@ const AddButton = () => {
             bcdate: baseline_dt,
             cpterms: cust_payment_terms,
             invid: invoice_id,
-        });
+        };
+
+        let dataObj2 = {
+            business_code: business_code,
+            customer_number: cust_number,
+            clear_date: clear_dt,
+            buisness_year: buisness_year,
+            doc_id: doc_id,
+            posting_date: posting_dt,
+            document_create_date: doc_create_dt,
+            due_in_date: due_dt,
+            invoice_currency: invoice_currency,
+            document_type: document_type,
+            posting_id: posting_id,
+            total_open_amount: total_open_amount,
+            baseline_create_date: baseline_dt,
+            customer_payment_terms: cust_payment_terms,
+            invoice_id: invoice_id,
+        };
+
+        var data = JSON.stringify(dataObj);
 
         var config = {
             method: "POST",
@@ -88,6 +108,8 @@ const AddButton = () => {
         axios(config)
             .then(function (response) {
                 console.log(JSON.stringify(response.data));
+                dataObj2.sl_no = response.data.sl_no;
+                props.setData(prevData => [...prevData, dataObj2])
             })
             .catch(function (error) {
                 console.log(error);

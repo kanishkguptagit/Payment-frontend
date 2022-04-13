@@ -19,8 +19,6 @@ const DeleteButton = (props) => {
 
         params.slice(0, -1);
 
-        console.log("params = "+params);
-
         axios
             .get("Payment/deletedata?" + params)
             .then((res) => {
