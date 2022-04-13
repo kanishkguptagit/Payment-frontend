@@ -48,7 +48,7 @@ const EditButton = (props) => {
                     const temp = prevData.findIndex(item=>item.sl_no === sl_no);
 
                     if(temp>=0)
-                    {
+                    {                        
                         prevData[temp].invoice_currency = curr;
                         prevData[temp].customer_payment_terms = cpt;
                     }
@@ -68,8 +68,12 @@ const EditButton = (props) => {
         if(sl!=null)
         {
             const prefill = props.data.filter(item => item.sl_no === sl);
-            setCurr(prefill[0].invoice_currency);
-            setCpt(prefill[0].customer_payment_terms);
+
+            if(prefill[0].invoice_currency!=null)
+                setCurr(prefill[0].invoice_currency);
+
+            if(prefill[0].customer_payment_terms!=null)
+                setCpt(prefill[0].customer_payment_terms);
         }
     },[open, props.data, props.rows])
 

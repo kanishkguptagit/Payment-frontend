@@ -27,24 +27,33 @@ const MainGrid=(props)=>{
   
   const[pageSize,setPageSize] = useState(5);
 
-  const fetchData = async () =>{
-    const res = await axios.get('Payment/fetchdata?offset=48578&limit=10');
+  const fetchData = async (offset,limit) =>{
+    const url = "Payment/fetchdata?offset="+offset+"&limit="+limit;
+    const res = await axios.get(url);
     props.setData(res.data.Payments);
     props.setCountRows(res.data.rowCount);
   }
 
+  const onPageChangeHandler = (page) => {
+    const offset = pageSize*page;
+    const limit = pageSize;
+    fetchData(offset,limit);
+  }
+
   useEffect(()=>{
-    fetchData();
-  },[props.reload])
+    fetchData(0,pageSize);
+  },[props.reload, pageSize])
 
      return (
             <div className='grid'> 
                 <DataGrid 
                     autoHeight 
+                    paginationMode="server"
                     getRowId={(row) => row.sl_no}
                     columns={cols} 
                     rows={props.data} 
                     rowCount={props.countRows}
+                    onPageChange={onPageChangeHandler}
                     // page={pageSize}
                     checkboxSelection 
                     pageSize={pageSize} 
