@@ -10,8 +10,8 @@ const Highradius = () => {
     return (
         <div>
             <Toolbar style={{backgroundColor:"#2d4250"}}>
-                <div className={classes.pos1} style={{ width:"100%"}}>
-                <img className={classes.imgclass}  src={abc} alt="hrclogo"/>
+                <div className={classes.pos1} style={{ width:"85%"}}>
+                <img className={classes.imgclass}  src={abc} alt="abclogo"/>
                 </div>
                 <div className={classes.pos} style={{ width:"100%"}}>
                 <img className={classes.imgclass}  src={hrc} alt="hrclogo"/>

@@ -6,7 +6,7 @@ const Footer = () => {
             <div>
                 <p style={{ color: "white", textAlign: "center" }}>
                     {" "}
-                    <a href="" class="active" style={{ color: "blue" }}>
+                    <a href="" style={{ color: "blue" }}>
                         Privacy Policy
                     </a>
                     © HighRadius Corporation 2022. All rights reserved.
